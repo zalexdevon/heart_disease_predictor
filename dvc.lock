@@ -1,0 +1,77 @@
+schema: '2.0'
+stages:
+  data_transformation:
+    cmd: python src/classifier/pipeline/stage_03_data_transformation.py
+    deps:
+    - path: artifacts/data_correction/train_data.pkl
+      hash: md5
+      md5: 407492265965ce22dca8652b5ddbe89d
+      size: 3267595
+    - path: artifacts/data_correction/val_data.pkl
+      hash: md5
+      md5: 93a3e9445899d58454ed845a54947bfd
+      size: 820709
+    - path: src/classifier/pipeline/stage_03_data_transformation.py
+      hash: md5
+      md5: 548b6c8d4ffd8c81a1293aea1a017476
+      size: 1111
+    params:
+      params.yaml:
+        data_transformation: '500'
+    outs:
+    - path: artifacts/data_transformation/500
+      hash: md5
+      md5: 96b0c7b717b2a3e8b8b409bce4e9b13c.dir
+      size: 21938077
+      nfiles: 6
+  model_trainer_randomised_train_val:
+    cmd: python src/classifier/pipeline/stage_04_model_training_randomised_train_val.py
+    deps:
+    - path: artifacts/data_transformation_0
+      hash: md5
+      md5: 72c531ad5fdbb0f3b9f58461f1cc6169.dir
+      size: 13914677
+      nfiles: 6
+    - path: src/classifier/pipeline/stage_04_model_training_randomised_train_val.py
+      hash: md5
+      md5: 47a3dba3a815ea44c1525acf8babcb9c
+      size: 1270
+    params:
+      params.yaml:
+        Randomised_search_train_val:
+          N_ITER: 10
+        model_name: XGB_6
+  model_trainer_grid_train_val:
+    cmd: python src/classifier/pipeline/stage_04_model_training_grid_train_val.py
+    deps:
+    - path: artifacts/data_transform_4
+      hash: md5
+      md5: 3462e1a040bc1392fa6ed5b159a12cfb.dir
+      size: 11778764
+      nfiles: 6
+    - path: src/classifier/pipeline/stage_04_model_training_grid_train_val.py
+      hash: md5
+      md5: 9ed280879488992609fd5c323c71d4f0
+      size: 960
+    params:
+      params.yaml:
+        LogisticRegression_1:
+          C: 0.1-0.5-0.1
+  model_trainer:
+    cmd: python src/classifier/pipeline/stage_04_model_training.py
+    deps:
+    - path: artifacts/data_transformation/500
+      hash: md5
+      md5: 96b0c7b717b2a3e8b8b409bce4e9b13c.dir
+      size: 21938077
+      nfiles: 6
+    - path: src/classifier/pipeline/stage_04_model_training.py
+      hash: md5
+      md5: e2a391b5ae7372e2a0b12043f36b60a5
+      size: 1715
+    params:
+      params.yaml:
+        N_ITER: 5
+        metric: accuracy
+        model_name: XGB_5
+        model_trainer_type: r
