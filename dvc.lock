@@ -60,10 +60,10 @@ stages:
   model_trainer:
     cmd: python src/classifier/pipeline/stage_04_model_training.py
     deps:
-    - path: artifacts/data_transformation/5
+    - path: artifacts/data_transformation/6
       hash: md5
-      md5: ced59de1b6dde6c196a2eec5aa19e1e8.dir
-      size: 66780713
+      md5: 44596d9a5faa268a25ac245e907682e1.dir
+      size: 114125398
       nfiles: 6
     - path: src/classifier/pipeline/stage_04_model_training.py
       hash: md5
@@ -73,5 +73,5 @@ stages:
       params.yaml:
         N_ITER: 5
         metric: accuracy
-        model_name: XGB_4
+        model_name: XGB_5
         model_trainer_type: r
