@@ -267,6 +267,11 @@ class DataTransformation:
 
         df_train_feature = df_train_transformed.drop(columns=[self.config.target_col])
         df_train_target = df_train_transformed[self.config.target_col]
+        if self.config.do_smote == "t":
+            smote = SMOTE(sampling_strategy="auto", random_state=42)
+            df_train_feature, df_train_target = smote.fit_resample(
+                df_train_feature, df_train_target
+            )
 
         df_val_feature = df_val_transformed.drop(columns=[self.config.target_col])
         df_val_target = df_val_transformed[self.config.target_col]

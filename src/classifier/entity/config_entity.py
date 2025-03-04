@@ -14,6 +14,7 @@ class DataTransformationConfig:
     val_features_path: Path
     val_target_path: Path
     target_col: Path
+    do_smote: str
 
 
 @dataclass(frozen=True)

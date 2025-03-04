@@ -38,6 +38,7 @@ class ConfigurationManager:
             val_features_path=config.val_features_path,
             val_target_path=config.val_target_path,
             target_col=self.params.target_col,
+            do_smote=self.params.do_smote,
         )
 
         return data_transformation_config
