@@ -6,12 +6,15 @@ metric: accuracy
 data_transformation: "2" # id của data_transformation
 
 # MODEL TRAINING
-model_name: SGD_1
+model_name: XGB
 param_grid_model_desc:
       n_estimators: 100-200
       max_depth: 10-15
-      subsample: 0.7-0.9
+      reg_alpha: 0
+      req_lambda: 0.1-0.3
       learning_rate: 0.01-0.03
+      subsample: 0.7-0.9
+      colsample_bytree: 0.7-0.9
 
 model_trainer_type: r # rcv: randomisedcv, gcv: gridcv, r: randomisedTrainVal, g: gridTrainVal
 N_ITER: 5 # số tổ hợp chọn khi chạy random search
