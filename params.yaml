@@ -3,12 +3,15 @@ target_col: "HadHeartAttack"
 metric: accuracy
 
 # DATA TRANSFORMATION
-data_transformation: "3" # id của data_transformation
+data_transformation: "2" # id của data_transformation
 
 # MODEL TRAINING
-model_name: LR1_2
+model_name: SGD
 param_grid_model_desc:
-      C: 40-50-1
+      n_estimators: 400-600
+      max_depth: 20-25
+      subsample: 0.7-0.9
+      learning_rate: 0.01-0.03
 
 model_trainer_type: r # rcv: randomisedcv, gcv: gridcv, r: randomisedTrainVal, g: gridTrainVal
 N_ITER: 5 # số tổ hợp chọn khi chạy random search
