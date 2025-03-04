@@ -708,3 +708,15 @@ def get_real_column_name_from_get_feature_names_out(columns):
     """Take the exact name from the list retrieved by method get_feature_names_out() of ColumnTransformer"""
 
     return [get_real_column_name(item) for item in columns]
+
+
+def fix_name_by_LGBM_standard(cols):
+    """LGBM standard state that columns name can only contain characters among letters, digit and '_'
+
+    Returns:
+        list: _description_
+    """
+
+    cols = pd.Series(cols)
+    cols = cols.str.replace(r"[^A-Za-z0-9_]", "_", regex=True)
+    return list(cols)
