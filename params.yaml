@@ -1,5 +1,5 @@
 # COMMON
-target_col: do_get_Alzheimer
+target_col: "HadHeartAttack"
 metric: accuracy
 
 # DATA TRANSFORMATION
