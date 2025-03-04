@@ -7,7 +7,7 @@ data_transformation: "8_2" # id của data_transformation
 do_smote: f # t: true, f: false
 
 # MODEL TRAINING
-model_name: LGB_3
+model_name: LGB_2
 param_grid_model_desc:
       n_estimators: 200-300
       max_depth: 20-25
