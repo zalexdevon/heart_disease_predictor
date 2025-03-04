@@ -154,44 +154,29 @@ class ModelTrainer:
             self.config.list_monitor_components_path, self.list_monitor_components
         )
 
-    def plot_monitor(self):
-        myfuncs.plot_monitor(self.list_monitor_components)
+    def save_list_monitor_components(self):
+        with open("artifacts/run_count.txt", "r") as file:
+            run_count = int(file.read())
+        with open("artifacts/run_count.txt", "w") as file:
+            file.write(str(run_count + 1))
 
-    def get_detail_of_training_and_save_data(self, param_list):
-        best_model = None
-        self.best_val_accuracy = -np.inf
-        self.train_accuracy_follow_best_val = 0
+        if run_count > 0:
 
-        for i, params in enumerate(param_list, 1):
-            model = clone(self.base_model)
-            model.set_params(**params)
-
-            start_time = time.time()
-            model.fit(self.train_feature_data, self.train_target_data)
-            end_time = time.time()
-
-            val_predictions = model.predict(self.val_feature_data)
-            val_accuracy = metrics.accuracy_score(self.val_target_data, val_predictions)
-
-            train_predictions = model.predict(self.train_feature_data)
-            train_accuracy = metrics.accuracy_score(
-                self.train_target_data, train_predictions
+            self.list_monitor_components = myfuncs.load_python_object(
+                self.config.list_monitor_components_path
             )
 
-            elapsed_time = round(end_time - start_time, 1)  # ⏱ Tính thời gian chạy
+        else:
+            self.list_monitor_components = []
 
-            print(
-                f"{i} -> Train: {round(train_accuracy*100, 2)} Val: {round(val_accuracy*100, 2)} Time: {elapsed_time} (s)\n\n"
+        self.list_monitor_components += [
+            (
+                self.monitor_desc,
+                self.train_score_follow_best_val,
+                self.best_val_score,
             )
+        ]
 
-            if self.best_val_accuracy < val_accuracy:
-                self.best_val_accuracy = val_accuracy
-                self.train_accuracy_follow_best_val = train_accuracy
-                best_model = model
-
-        self.best_val_accuracy = round(self.best_val_accuracy * 100, 2)
-        self.train_accuracy_follow_best_val = round(
-            self.train_accuracy_follow_best_val * 100, 2
+        myfuncs.save_python_object(
+            self.config.list_monitor_components_path, self.list_monitor_components
         )
-
-        myfuncs.save_python_object(self.config.best_model_path, best_model)

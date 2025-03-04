@@ -315,8 +315,6 @@ def save_python_object(file_path, obj):
     """
 
     try:
-        dir_path = os.path.dirname(file_path)
-        os.makedirs(dir_path, exist_ok=True)
 
         with open(file_path, "wb") as file_obj:
             pickle.dump(obj, file_obj)
@@ -448,6 +446,7 @@ def get_features_target_spliter_for_CV_train_train(train_features, train_target)
     )
 
     return features, target, spliter
+
 
 @ensure_annotations
 def read_yaml(path_to_yaml: Path) -> ConfigBox:
@@ -627,7 +626,6 @@ def process_param_name(name):
         return name[:3]
 
     return name + "_" * (3 - len(name))
-
 
 
 def get_param_grid_model(param_grid_model: dict):
