@@ -6,9 +6,10 @@ metric: accuracy
 data_transformation: "1_1" # id của data_transformation
 
 # MODEL TRAINING
-model_name: LR_2
+model_name: LRe_1
 param_grid_model_desc:
       C: 40-50-1
+      l1_ratio: 0.8-1
 
 model_trainer_type: r # rcv: randomisedcv, gcv: gridcv, r: randomisedTrainVal, g: gridTrainVal
 N_ITER: 5 # số tổ hợp chọn khi chạy random search
