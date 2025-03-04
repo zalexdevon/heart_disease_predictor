@@ -64,18 +64,19 @@ class AfterFeatureColumnTransformer(BaseEstimator, TransformerMixin):
     def transform(self, X, y=None) -> pd.DataFrame:
         X = X.drop(
             columns=[
-                "HadSkinCancer_bin",
-                "HadAsthma_bin",
-                "HadDepressiveDisorder_bin",
-                "WeightInKilograms_num",
-                "HeightInMeters_num",
-                "FluVaxLast12_bin",
-                "MentalHealthDays_num",
-                "TetanusLast10Tdap_nom_Yes, received tetanus shot, but not Tdap",
-                "DifficultyConcentrating_bin",
-                "DifficultyErrands_bin",
+                "ECigaretteUsage_ord",
                 "SleepHours_num",
                 "PhysicalHealthDays_num",
+                "DifficultyErrands_bin",
+                "HeightInMeters_num",
+                "TetanusLast10Tdap_nom_Yes, received tetanus shot, but not Tdap",
+                "PhysicalActivities_bin",
+                "FluVaxLast12_bin",
+                "DifficultyConcentrating_bin",
+                "HadDepressiveDisorder_bin",
+                "TetanusLast10Tdap_nom_Yes, received tetanus shot but not sure what type",
+                "HadAsthma_bin",
+                "HadDiabetes_nom_Yes, but only during pregnancy (female)",
             ]
         )
 
