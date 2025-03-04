@@ -17,13 +17,13 @@ stages:
       size: 1111
     params:
       params.yaml:
-        data_transformation: '1'
+        data_transformation: '1_1'
     outs:
-    - path: artifacts/data_transformation/1
+    - path: artifacts/data_transformation/1_1
       hash: md5
-      md5: d751713988987e9331980363e24189ce.dir
-      size: 0
-      nfiles: 0
+      md5: 642a9681eb131cc9073bbdf8f0c738b8.dir
+      size: 327515173
+      nfiles: 6
   model_trainer_randomised_train_val:
     cmd: python src/classifier/pipeline/stage_04_model_training_randomised_train_val.py
     deps:
