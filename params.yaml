@@ -4,7 +4,7 @@ metric: accuracy
 
 # DATA TRANSFORMATION
 do_smote: t # t: true, f: false
-data_transformation: "5" # id của data_transformation
+data_transformation: "6" # id của data_transformation
 
 # MODEL TRAINING
 model_name: XGB_4
