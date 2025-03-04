@@ -64,7 +64,7 @@ class AfterFeatureColumnTransformer(BaseEstimator, TransformerMixin):
         return self
 
     def transform(self, X, y=None) -> pd.DataFrame:
-        X = self.pca.transform(X)
+        X = pd.DataFrame(self.pca.transform(X))
 
         self.cols = X.columns.tolist()
         return X
