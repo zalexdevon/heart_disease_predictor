@@ -58,10 +58,13 @@ class AfterFeatureColumnTransformer(BaseEstimator, TransformerMixin):
         super().__init__()
 
     def fit(self, X, y=None):
+        self.pca = PCA(n_components=25, random_state=42)
+        self.pca.fit(X)
 
         return self
 
     def transform(self, X, y=None) -> pd.DataFrame:
+        X = self.pca.transform(X)
 
         self.cols = X.columns.tolist()
         return X
