@@ -6,7 +6,7 @@ metric: accuracy
 data_transformation: "2" # id của data_transformation
 
 # MODEL TRAINING
-model_name: LR
+model_name: LR1
 param_grid_model_desc:
       C: 40-50-1
 
