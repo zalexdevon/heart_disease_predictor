@@ -73,5 +73,5 @@ stages:
       params.yaml:
         N_ITER: 5
         metric: accuracy
-        model_name: XGB_3
+        model_name: XGB_4
         model_trainer_type: r
