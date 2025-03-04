@@ -5,25 +5,25 @@ stages:
     deps:
     - path: artifacts/data_correction/train_data.pkl
       hash: md5
-      md5: 407492265965ce22dca8652b5ddbe89d
-      size: 3267595
+      md5: 905919fea11c23b56687c56dffeec481
+      size: 24490492
     - path: artifacts/data_correction/val_data.pkl
       hash: md5
-      md5: 93a3e9445899d58454ed845a54947bfd
-      size: 820709
+      md5: cb510f08f02868d9c6ddfd04421868d1
+      size: 6128302
     - path: src/classifier/pipeline/stage_03_data_transformation.py
       hash: md5
       md5: 548b6c8d4ffd8c81a1293aea1a017476
       size: 1111
     params:
       params.yaml:
-        data_transformation: '500'
+        data_transformation: '1'
     outs:
-    - path: artifacts/data_transformation/500
+    - path: artifacts/data_transformation/1
       hash: md5
-      md5: 96b0c7b717b2a3e8b8b409bce4e9b13c.dir
-      size: 21938077
-      nfiles: 6
+      md5: d751713988987e9331980363e24189ce.dir
+      size: 0
+      nfiles: 0
   model_trainer_randomised_train_val:
     cmd: python src/classifier/pipeline/stage_04_model_training_randomised_train_val.py
     deps:
