@@ -6,10 +6,10 @@ metric: accuracy
 data_transformation: "2" # id của data_transformation
 
 # MODEL TRAINING
-model_name: SGD
+model_name: SGD_1
 param_grid_model_desc:
-      n_estimators: 400-600
-      max_depth: 20-25
+      n_estimators: 100-200
+      max_depth: 10-15
       subsample: 0.7-0.9
       learning_rate: 0.01-0.03
 
