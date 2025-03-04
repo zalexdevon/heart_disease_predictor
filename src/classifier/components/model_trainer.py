@@ -97,13 +97,13 @@ class ModelTrainer:
     def update_best_val_score(self, scores):
         while True:
             if self.config.metric == "accuracy":
-                self.best_val_accuracy = scores[0][1] * 100
-                self.train_accuracy_follow_best_val = scores[0][0] * 100
+                self.best_val_score = scores[0][1] * 100
+                self.train_score_follow_best_val = scores[0][0] * 100
                 return
 
             if self.config.metric == "neg_log_loss":
-                self.best_val_accuracy = -scores[0][1]
-                self.train_accuracy_follow_best_val = -scores[0][0]
+                self.best_val_score = -scores[0][1]
+                self.train_score_follow_best_val = -scores[0][0]
                 return
 
             return
@@ -146,8 +146,8 @@ class ModelTrainer:
         self.list_monitor_components += [
             (
                 self.monitor_desc,
-                self.train_accuracy_follow_best_val,
-                self.best_val_accuracy,
+                self.train_score_follow_best_val,
+                self.best_val_score,
             )
         ]
         myfuncs.save_python_object(
