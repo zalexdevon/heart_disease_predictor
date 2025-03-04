@@ -32,6 +32,14 @@ class PreFeatureColumnTransformer(BaseEstimator, TransformerMixin):
         return self
 
     def transform(self, X, y=None) -> pd.DataFrame:
+        X = X.drop(
+            columns=[
+                "State_nom",
+                "RemovedTeeth_nom",
+                "AgeCategory_nom",
+                "DifficultyDressingBathing_bin",
+            ]
+        )
 
         self.cols = X.columns.tolist()
         return X
